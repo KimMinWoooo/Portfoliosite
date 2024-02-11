@@ -4,7 +4,7 @@ import Head from "next/head";
 
 function Layout({ children }) {
   return (
-    <>
+    <div className="bg-primary">
       <Head>
         <title>우코딩 포트폴리오</title>
         <meta name="description" content="우코딩" />
@@ -13,7 +13,7 @@ function Layout({ children }) {
       <Header />
       <div>{children}</div>
       <Footer />
-    </>
+    </div>
   );
 }
 
