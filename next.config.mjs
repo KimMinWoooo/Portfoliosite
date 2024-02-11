@@ -2,10 +2,10 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: [
-            'www.notion.so',
-            'images.unsplash.com',
-            'prod-files-secure.s3.us-west-2.amazonaws.com'
+        remotePatterns: [
+            { hostname: 'www.notion.so', },
+            { hostname: 'images.unsplash.com', },
+            { hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com', }
         ]
     }
 };

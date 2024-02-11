@@ -25,13 +25,13 @@ function ProjectItem({ data }) {
       endDateStringArray[2]
     );
 
-    console.log(`startDate: ${startDate}`);
-    console.log(`endDate: ${endDate}`);
+    // console.log(`startDate: ${startDate}`);
+    // console.log(`endDate: ${endDate}`);
 
     const diffInMs = Math.abs(endDate - startDate);
     const result = diffInMs / (1000 * 60 * 60 * 24);
 
-    console.log(`기간 : ${result}`);
+    // console.log(`기간 : ${result}`);
     return result;
   };
 
@@ -41,10 +41,9 @@ function ProjectItem({ data }) {
         className="rounded-t-xl"
         src={imgSrc}
         alt="cover image"
-        width="100"
-        height="60"
-        layout="responsive"
-        objectFit="none"
+        style={{ objectFit: 'contain'}}
+        width={700}
+        height={600}
         quality={100}
       />
       <div className="p-4 flex flex-col">

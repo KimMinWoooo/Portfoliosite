@@ -2,7 +2,6 @@ import ProjectItem from "@/components/projects/project-item";
 import { TOKEN, DATABASE_ID } from "../config/index";
 
 function Projects({ projects }) {
-  console.log(projects);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-3 mb-10">
       <h1 className="text-4xl font-bold sm:text-6xl">
@@ -21,7 +20,11 @@ function Projects({ projects }) {
 
 export default Projects;
 
-export async function getServerSideProps() {
+
+// getServerSideProps를 쓴다면 요청 마다 호출하고
+// getStaticProps를 쓴다면 빌드 타임에 호출한다. -> 요청이 들어올때마다 페이지가 만들어지길 기다려야한다.
+// 항상 바뀌는 데이터가 없거나 인증같이 요청 객체에 접속할 필요가 없다면 getStaticProps 가 더 낫다.
+export async function getStaticProps() {
   const options = {
     method: "POST",
     headers: {
@@ -53,9 +56,10 @@ export async function getServerSideProps() {
     (aProject) => aProject.properties.이름.title[0].plain_text
   );
 
-  console.log(`projectNames : ${projectNames}`);
+//   console.log(`projectNames : ${projectNames}`);
 
   return {
     props: { projects },
+    revalidate: 60 // 60초마다 서버에서 페이지를 다시 생성
   };
 }

@@ -1,4 +1,4 @@
-import Animation from "@/components/home/animation";
+import Animation from "./animation";
 import Link from "next/link";
 
 function Hero() {
