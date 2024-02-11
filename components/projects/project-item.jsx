@@ -8,6 +8,7 @@ function ProjectItem({ data }) {
   const tags = data.properties.태그.multi_select;
   const start = data.properties.Workperiod.date.start;
   const end = data.properties.Workperiod.date.end;
+  const people = data.properties.인원.rich_text[0].text.content;
 
   const calculatedPeriod = (start, end) => {
     const startDateStringArray = start.split("-");
@@ -50,9 +51,11 @@ function ProjectItem({ data }) {
         <h1 className="text-2xl font-bold">{title}</h1>
         <h3 className="mt-4 text-xl">{description}</h3>
         <a href={gitLink}>깃허브 바로가기</a>
+        <div>참가 인원 : {people}</div>
         <p className="my-1 ">
           작업기간 : {start} ~ {end} ({calculatedPeriod(start, end)}일)
         </p>
+        
 
         <div className="flex items-start mt-2">
           {tags.map((aTag) => (
